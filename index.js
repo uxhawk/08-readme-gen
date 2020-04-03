@@ -24,7 +24,8 @@ function promptUser() {
 }
 
 function generateReadMe(ans) {
-    let template = `<h1>${ans.projTitle}</h1><p>${ans.projDesc}</p><h2>Table Of Contents</h2><ul><li><a href="#contributors">Contributors</a></li></ul><h3 id=""contributors>Contributors</h3><p>${ans.gitHub}</p>`;
+    let template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* item 1\n* item 2\n\n## Installation\n\n## Usage\n\n## License\n[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)\n\n## Contributing\n\n## Tests\n\n## Questions\n\n`;
+
 
 
     return template;
