@@ -42,7 +42,7 @@ function promptEmail() {
 
 function generateReadMe(ans, img, badge, email) {
     //template for readme without any spaces, otherwise formatting is thrown off
-    const template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n## Usage\n\n## License\n${badge}\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n${email}\n\n## Tests\n\n## Questions`;
+    const template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n## Usage\n\n## License\n${badge}\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n\n${email}\n\n## Tests\n\n## Questions`;
 
     return template;
 }
