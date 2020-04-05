@@ -39,7 +39,7 @@ In the command line, run:
 This will launch the program. Answer four questions, then the README will be added to your cloned repo. 
 
 ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 ## Contributing
 [<img src="https://avatars1.githubusercontent.com/u/16821657?v=4" width="60px" style="border-radius:30px">](https://github.com/uxhawk)
