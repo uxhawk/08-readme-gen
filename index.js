@@ -20,26 +20,68 @@ function promptUser() {
             name: "projDesc",
             message: "What is the description of your project?"
         },
+        {
+            type: "list",
+            name: "license",
+            message: "What license would you like to use?",
+            choices: ["ISC", "MIT", "GNU GPLv3"]
+        }
 
     ]);
 }
 
-function generateReadMe(ans, img) {
-    let template = `[![GitHub stars](https://img.shields.io/github/stars/${ans.gitHub}/gw-hmwk-08-readme-gen.svg?style=social&label=Star&maxAge=2592000)](https://github.com/${ans.gitHub}/gw-hmwk-08-readme-gen)\n\n# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n## Usage\n\n## License\n[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n\n## Tests\n\n## Questions`;
+function promptEmail() {
+    return inquirer.prompt([{
+            type: "input",
+            name: "email",
+            message: "The program couldn't locate your email address. Please manually input your email."
+        }
+
+    ]);
+}
+
+function generateReadMe(ans, img, badge, email) {
+    //template for readme without any spaces, otherwise formatting is thrown off
+    const template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n## Usage\n\n## License\n${badge}\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n${email}\n\n## Tests\n\n## Questions`;
 
     return template;
 }
 
 async function init() {
-    console.log("Welcome to the readme generator. Let's begin.")
+    console.log(`\nWelcome to the README generator.\n\nThese prompts will help you create a legit README.md file for your project.\n\nLet's begin.\n${`-`.repeat(60)}\n`);
     try {
         const answers = await promptUser();
 
-        const avatar = await axios.get(`https://api.github.com/users/${answers.gitHub}`);
+        const gitData = await axios.get(`https://api.github.com/users/${answers.gitHub}/events/public`);
 
-        const avatarUrl = avatar.data.avatar_url;
+        var userEmail = "";
+        //loop through the massive events/public JSON object to look for an email
+        for (let i = 0; i < gitData.data.length; i++) {
+            if (gitData.data[i].payload.hasOwnProperty("commits")) {
+                userEmail = gitData.data[i].payload.commits[0].author.email;
+                break;
+            }
+        };
 
-        const readMe = generateReadMe(answers, avatarUrl);
+        if (userEmail === "") {
+            emailFollowUp = await promptEmail();
+            userEmail = emailFollowUp.email;
+        }
+
+        const avatar = gitData.data[0].actor.avatar_url;
+
+        //get the badge for the license
+        const license = answers.license;
+        var badge = "";
+        if (license === "ISC") {
+            badge = `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`;
+        } else if (license === "MIT") {
+            badge = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+        } else {
+            badge = `[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`;
+        }
+
+        const readMe = generateReadMe(answers, avatar, badge, userEmail);
 
         await writeFileAsync("README.md", readMe);
 
@@ -55,4 +97,5 @@ init();
 //https://api.github.com/users/uxhawk/events/public
 //[<img src="img" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})
 
-//[![GitHub stars](https://img.shields.io/github/stars/${answers.gitHub}/gw-hmwk-08-readme-gen.svg?style=social&label=Star&maxAge=2592000)](https://github.com/answers.gitHub/gw-hmwk-08-readme-gen)
+
+//[![GitHub stars](https://img.shields.io/github/stars/${ans.gitHub}/gw-hmwk-08-readme-gen.svg?style=social&label=Star&maxAge=2592000)](https://github.com/${ans.gitHub}/gw-hmwk-08-readme-gen)\n\n# 
