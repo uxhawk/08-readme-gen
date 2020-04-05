@@ -41,7 +41,7 @@ This will launch the program. Answer four questions, then the README will be add
 ## License
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-## Contributing
+## :pray: Contributing
 [<img src="https://avatars1.githubusercontent.com/u/16821657?v=4" width="60px" style="border-radius:30px">](https://github.com/uxhawk)
 
 uxhawk@gmail.com
