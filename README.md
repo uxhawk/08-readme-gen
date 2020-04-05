@@ -2,7 +2,7 @@
 
 # README Generator
 
-Use index.js to create a README file for your projects. By default, the readme file will include: 
+Use index.js to create a README file for your projects. By default, the README will include: 
 * Title
 * Description
 * Table of Contents
