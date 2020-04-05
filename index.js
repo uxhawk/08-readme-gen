@@ -92,10 +92,3 @@ async function init() {
 }
 
 init();
-// https://api.github.com/users/octocat/orgs
-// /user/emails
-//https://api.github.com/users/uxhawk/events/public
-//[<img src="img" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})
-
-
-//[![GitHub stars](https://img.shields.io/github/stars/${ans.gitHub}/gw-hmwk-08-readme-gen.svg?style=social&label=Star&maxAge=2592000)](https://github.com/${ans.gitHub}/gw-hmwk-08-readme-gen)\n\n# 
