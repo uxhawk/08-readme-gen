@@ -21,11 +21,31 @@ function promptUser() {
             message: "What is the description of your project?"
         },
         {
+            type: "input",
+            name: "projInstall",
+            message: "What are the installation instructions?"
+        },
+        {
+            type: "input",
+            name: "projUsage",
+            message: "What are the usage instructions?"
+        },
+        {
             type: "list",
             name: "license",
             message: "What license would you like to use?",
             choices: ["ISC", "MIT", "GNU GPLv3"]
-        }
+        },
+        {
+            type: "input",
+            name: "projTests",
+            message: "What are the testing instructions?"
+        },
+        {
+            type: "input",
+            name: "projQuestions",
+            message: "What are the questions for this project?"
+        },
 
     ]);
 }
@@ -42,7 +62,7 @@ function promptEmail() {
 
 function generateReadMe(ans, img, badge, email) {
     //template for readme without any spaces, otherwise formatting is thrown off
-    const template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n## Usage\n\n## License\n${badge}\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n\n${email}\n\n## Tests\n\n## Questions`;
+    const template = `# ${ans.projTitle}\n\n${ans.projDesc}\n\n## Table of Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [License](#license)\n* [Contributing](#contributing)\n* [Tests](#tests)\n* [Questions](#questions)\n\n## Installation\n\n${ans.projInstall}\n\n## Usage\n\n${ans.projUsage}\n\n## License\n${badge}\n\n## Contributing\n[<img src="${img}" width="60px" style="border-radius:30px">](https://github.com/${ans.gitHub})\n\n${email}\n\n## Tests\n\n${ans.projTests}\n\n## Questions\n\n${ans.projQuestions}`;
 
     return template;
 }
@@ -83,7 +103,7 @@ async function init() {
 
         const readMe = generateReadMe(answers, avatar, badge, userEmail);
 
-        await writeFileAsync("README.md", readMe);
+        await writeFileAsync("README2.md", readMe);
 
         console.log("Successfully wrote to readMe.md");
     } catch (err) {
