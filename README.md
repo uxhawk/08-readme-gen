@@ -33,7 +33,6 @@ will add node modules for:
 
 ## Usage
 In the command line, run:
-<<<<<<< HEAD
 
 `$ node index.js`
 
@@ -41,13 +40,6 @@ This will launch the program. Answer four questions, then the README will be add
 
 ## License
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
-
-## Contributing
-
-`$ node index.js`
-
-This will launch the program. Answer four questions, then the README will be added to your cloned repo. 
-
 
 
 ## Contributing :pray: 
