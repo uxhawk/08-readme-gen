@@ -1,5 +1,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/uxhawk/gw-hmwk-08-readme-gen.svg?style=social&label=Star&maxAge=2592000)](https://github.com/uxhawk/gw-hmwk-08-readme-gen/stargazers) 
 
+![Readme Generator Demo](img/functional_recording.gif)
+
 # README Generator
 
 Use index.js to create a README file for your projects. By default, the README will include: 
