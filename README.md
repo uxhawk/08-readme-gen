@@ -36,7 +36,7 @@ In the command line, run:
 
 `$ node index.js`
 
-This will launch the program. Answer four questions, then the README will be added to your cloned repo. 
+This will launch the program. Then, answer a few short questions after which a README will be added to your cloned repo. 
 
 ## License
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
